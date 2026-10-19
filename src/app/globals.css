@@ -1,0 +1,272 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/space-grotesk";
+@import "@fontsource-variable/jetbrains-mono";
+@import "@fontsource/atkinson-hyperlegible/400.css";
+@import "@fontsource/atkinson-hyperlegible/700.css";
+@import "@fontsource/opendyslexic/400.css";
+@import "@fontsource/opendyslexic/700.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ==========================================================================
+   GeoMzansi design tokens
+   Every colour has ONE meaning across the whole site (see docs/06-design-system.md).
+   ========================================================================== */
+:root {
+  /* Surfaces */
+  --bg: #f6f8f7;
+  --bg-elevated: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #eef2f0;
+  --border: #dde5e1;
+  --text: #13201b;
+  --text-muted: #55655e;
+  --ring: #0d9488;
+
+  /* Brand & meaning */
+  --brand: #0f766e;        /* Mzansi Teal – actions, links, "you can click this" */
+  --brand-soft: #dff4f0;
+  --t-climate: #0369a1;    /* Climate & Weather – sky blue */
+  --t-geomorph: #c2410c;   /* Geomorphology – river-cut earth */
+  --t-settlement: #7c3aed; /* Settlement – violet */
+  --t-economic: #a16207;   /* Economic Geography – gold */
+  --t-mapwork: #4d7c0f;    /* Mapwork & GIS – topo-map green */
+  --success: #16a34a;
+  --warning: #b45309;
+  --danger: #dc2626;       /* ONLY used for errors and common mistakes */
+  --info: #0891b2;
+  --memory: #c026d3;       /* Memory hooks & mnemonics */
+  --exam: #b45309;         /* Exam tips */
+
+  /* Maps & diagrams */
+  --water: #3b82f6;
+  --land: #e7efe3;
+  --contour: #a0522d;
+  --map-ink: #1f2937;
+
+  --code-bg: #10201b;
+  --code-text: #e6f0ec;
+
+  --reading-scale: 1;
+  --reading-leading: 1.7;
+  --reading-font: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+}
+
+.dark {
+  --bg: #08110e;
+  --bg-elevated: #0f1a16;
+  --surface: #111d19;
+  --surface-2: #182823;
+  --border: #253a33;
+  --text: #e8f1ed;
+  --text-muted: #9db3aa;
+  --brand: #2dd4bf;
+  --brand-soft: #123530;
+  --t-climate: #38bdf8;
+  --t-geomorph: #fb923c;
+  --t-settlement: #a78bfa;
+  --t-economic: #facc15;
+  --t-mapwork: #a3e635;
+  --success: #4ade80;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --info: #22d3ee;
+  --memory: #e879f9;
+  --exam: #fbbf24;
+  --water: #60a5fa;
+  --land: #1c2b24;
+  --contour: #e0a070;
+  --map-ink: #e5e7eb;
+  --code-bg: #07100d;
+}
+
+/* High contrast: pure black/white, thicker focus rings, no transparency. */
+.contrast {
+  --bg: #000000;
+  --bg-elevated: #000000;
+  --surface: #000000;
+  --surface-2: #111111;
+  --border: #ffffff;
+  --text: #ffffff;
+  --text-muted: #f0f0f0;
+  --brand: #ffd400;
+  --brand-soft: #222200;
+  --t-climate: #7fd4ff;
+  --t-geomorph: #ffa060;
+  --t-settlement: #d0b0ff;
+  --t-economic: #ffe14d;
+  --t-mapwork: #b8ff4d;
+  --danger: #ff6b6b;
+  --ring: #ffd400;
+  --land: #111111;
+}
+
+.font-atkinson { --reading-font: "Atkinson Hyperlegible", ui-sans-serif, system-ui, sans-serif; }
+.font-dyslexic { --reading-font: "OpenDyslexic", "Atkinson Hyperlegible", ui-sans-serif, sans-serif; }
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-elevated: var(--bg-elevated);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--border);
+  --color-fg: var(--text);
+  --color-muted: var(--text-muted);
+  --color-brand: var(--brand);
+  --color-brand-soft: var(--brand-soft);
+  --color-climate: var(--t-climate);
+  --color-geomorph: var(--t-geomorph);
+  --color-settlement: var(--t-settlement);
+  --color-economic: var(--t-economic);
+  --color-mapwork: var(--t-mapwork);
+  --color-exam: var(--exam);
+  --color-water: var(--water);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+  --color-memory: var(--memory);
+  --color-code: var(--code-bg);
+  --font-sans: var(--reading-font);
+  --font-display: "Space Grotesk Variable", "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --animate-aurora: aurora 60s linear infinite;
+  --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
+  --animate-scroll: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+  --animate-meteor: meteor 5s linear infinite;
+  --animate-shimmer: shimmer 2.2s linear infinite;
+}
+
+@keyframes aurora {
+  from { background-position: 50% 50%, 50% 50%; }
+  to { background-position: 350% 50%, 350% 50%; }
+}
+@keyframes spotlight {
+  0% { opacity: 0; transform: translate(-72%, -62%) scale(0.5); }
+  100% { opacity: 1; transform: translate(-50%, -40%) scale(1); }
+}
+@keyframes scroll {
+  to { transform: translate(calc(-50% - 0.5rem)); }
+}
+@keyframes meteor {
+  0% { transform: rotate(215deg) translateX(0); opacity: 1; }
+  70% { opacity: 1; }
+  100% { transform: rotate(215deg) translateX(-500px); opacity: 0; }
+}
+@keyframes shimmer {
+  from { background-position: 0 0; }
+  to { background-position: -200% 0; }
+}
+
+html {
+  font-size: calc(16px * var(--reading-scale));
+  scroll-behavior: smooth;
+}
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--reading-font);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Calm mode / reduced motion: switch off decorative animation everywhere. */
+.calm *, .calm *::before, .calm *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+.calm .decorative { display: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+::selection { background: color-mix(in oklab, var(--brand) 35%, transparent); }
+
+/* Reading copy used inside lessons */
+.prose-learn {
+  font-size: 1.0625rem;
+  line-height: var(--reading-leading);
+  max-width: 70ch;
+}
+.prose-learn p { margin: 0.65em 0; }
+.prose-learn strong { color: var(--text); font-weight: 700; }
+.prose-learn ul { list-style: disc; padding-left: 1.4em; margin: 0.5em 0; }
+.prose-learn ol { list-style: decimal; padding-left: 1.4em; margin: 0.5em 0; }
+.prose-learn li { margin: 0.3em 0; }
+.prose-learn code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  padding: 0.05em 0.35em;
+  border-radius: 0.35em;
+}
+.prose-learn table { border-collapse: collapse; margin: 0.8em 0; font-size: 0.95em; }
+.prose-learn th, .prose-learn td { border: 1px solid var(--border); padding: 0.4em 0.7em; text-align: left; }
+.prose-learn th { background: var(--surface-2); }
+.prose-learn a { color: var(--brand); text-decoration: underline; text-underline-offset: 3px; }
+
+/* Docs (teacher guide) typography */
+.prose-docs { line-height: 1.75; font-size: 1rem; }
+.prose-docs h1 { font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; margin: 0 0 0.6em; letter-spacing: -0.02em; }
+.prose-docs h2 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; margin: 2em 0 0.6em; padding-top: 0.6em; border-top: 1px solid var(--border); }
+.prose-docs h3 { font-size: 1.15rem; font-weight: 700; margin: 1.6em 0 0.4em; }
+.prose-docs p { margin: 0.8em 0; }
+.prose-docs ul { list-style: disc; padding-left: 1.5em; margin: 0.6em 0; }
+.prose-docs ol { list-style: decimal; padding-left: 1.5em; margin: 0.6em 0; }
+.prose-docs li { margin: 0.25em 0; }
+.prose-docs a { color: var(--brand); text-decoration: underline; text-underline-offset: 3px; }
+.prose-docs blockquote { border-left: 4px solid var(--brand); background: var(--brand-soft); padding: 0.6em 1em; border-radius: 0 0.6em 0.6em 0; margin: 1em 0; }
+.prose-docs code { font-family: var(--font-mono); font-size: 0.88em; background: var(--surface-2); border: 1px solid var(--border); padding: 0.05em 0.35em; border-radius: 0.35em; }
+.prose-docs pre { background: var(--code-bg); color: var(--code-text); padding: 1em 1.2em; border-radius: 0.8em; overflow-x: auto; margin: 1em 0; font-size: 0.88em; line-height: 1.6; }
+.prose-docs pre code { background: transparent; border: 0; padding: 0; color: inherit; }
+.prose-docs table { width: 100%; border-collapse: collapse; margin: 1em 0; font-size: 0.93em; display: block; overflow-x: auto; }
+.prose-docs th, .prose-docs td { border: 1px solid var(--border); padding: 0.5em 0.8em; text-align: left; vertical-align: top; }
+.prose-docs th { background: var(--surface-2); font-weight: 700; }
+.prose-docs hr { border: 0; border-top: 1px solid var(--border); margin: 2em 0; }
+
+/* Reading ruler (ADHD / dyslexia support) */
+.reading-ruler {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 2.6em;
+  pointer-events: none;
+  z-index: 60;
+  background: color-mix(in oklab, var(--brand) 10%, transparent);
+  border-top: 2px solid color-mix(in oklab, var(--brand) 45%, transparent);
+  border-bottom: 2px solid color-mix(in oklab, var(--brand) 45%, transparent);
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.18);
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+.grid-bg {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--text) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--text) 6%, transparent) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+/* Focus mode hides navigation chrome so only the learning content remains. */
+.focus-mode .hide-in-focus { display: none !important; }
+
+
+/* Safety net: never allow sideways scrolling of the whole page on phones. */
+main { overflow-x: clip; }
+.prose-docs td code, .prose-learn td code { white-space: nowrap; }
+
+/* SVG diagrams scale with their container and follow the theme. */
+.diagram { width: 100%; height: auto; display: block; }
+.diagram text { font-family: var(--reading-font); fill: var(--text); }
+.diagram .muted { fill: var(--text-muted); }
