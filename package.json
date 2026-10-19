@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "description": "GeoMzansi – an interactive CAPS Grade 12 Geography companion for Northwood Boys' High School learners: lessons, quizzes, flashcards, exam practice and interactive tools.",
+  "engines": {
+    "node": ">=18.18.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
